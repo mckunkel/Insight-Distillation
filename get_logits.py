@@ -8,7 +8,7 @@ from utils.image_preprocessing_v1 import ImageDataGenerator
 
 from keras.models import Model
 from models.xception import Xception, preprocess_input
-import model_constants as c
+import constants as c
 
 
 data_dir = c.data_dir

@@ -152,4 +152,4 @@ def microXception(weight_decay=1e-4, classes=256, input_shape=(299, 299, 3),num_
 
 if __name__ == '__main__':
     model = microXception(weight_decay=1e-5, num_residuals=0)
-    model.save("my_model.hdf5")
+    model.save("microXception.hdf5")

@@ -8,7 +8,7 @@ from keras import backend as K
 import matplotlib.pyplot as plt
 
 from models.xception import Xception, preprocess_input
-import model_constants as c
+import constants as c
 data_dir = c.data_dir
 
 data_generator = ImageDataGenerator(
@@ -106,3 +106,4 @@ plt.savefig('top5_accuracy_vs_epoch.png')
 model.evaluate_generator(val_generator, 80)
 
 model.save_weights('xception_weights.hdf5')
+model.save('xception.hdf5')

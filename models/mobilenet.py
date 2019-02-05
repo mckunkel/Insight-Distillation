@@ -30,4 +30,5 @@ def get_mobilenet(input_size, alpha, weight_decay, dropout):
     return model
 
 if __name__ == '__main__':
-    get_mobilenet(224, alpha=0.25, weight_decay=1e-5, dropout=0.1)
+    model = get_mobilenet(224, alpha=0.25, weight_decay=1e-5, dropout=0.1)
+    model.save("mobilenet.hdf5")
