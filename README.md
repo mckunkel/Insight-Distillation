@@ -14,12 +14,6 @@ An indepth video, given by Geoffrey Hinton can be seen [here](https://www.youtub
 * conda create -n DistillingNeuralNetwork python=3.6
 * conda install keras matplotlib numpy pandas Pillow torchvision tqdm
 
-### Anaconda Environment
-* see [Setting a conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)
-* conda environment included as environment.yml
-*  conda env create -f environment.yml
-* conda activate Distilling
-
 ### Data 
 * folder data_stuff
 #### Get, decode, split data into valdation and training set
