@@ -3,7 +3,7 @@ import shutil
 import constants as c
 import os
 
-
+# Module to clean the data
 def clean_data():
     # There are objects in the files that are not images
     # Delete them

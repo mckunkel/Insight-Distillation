@@ -4,11 +4,6 @@ from keras.models import Model
 from keras.layers import Input, BatchNormalization, Conv2D, SeparableConv2D, MaxPooling2D
 from keras.layers import GlobalAveragePooling2D, Dense, Activation, Dropout
 from keras import layers
-from keras.utils.data_utils import get_file
-##
-from keras.losses import categorical_crossentropy as logloss
-from keras import optimizers
-from keras import backend as K
 
 
 TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.4/xception_weights_tf_dim_ordering_tf_kernels_notop.h5'

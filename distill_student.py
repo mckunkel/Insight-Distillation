@@ -10,7 +10,6 @@ from utils.image_preprocessing_v2 import ImageDataGenerator
 # logits came from xception
 
 from keras.models import Model
-from keras.models import load_model
 from keras.layers import Lambda, concatenate, Activation
 from keras.losses import categorical_crossentropy as logloss
 from keras import backend as K
@@ -23,8 +22,12 @@ from utils.plot_utils import plot_utils as plt_uts
 from utils.history_utils import history_utils as hist_uts
 from utils.save_utils import save_utils as save_uts
 
-
-def distill(temperature=5.0, lambda_const=0.07, model_path='', save_name=''):
+# Module to distill a student model
+# if uning another model besides the preset Squeezenet model
+# write the model, save it and change the import
+# from models.squeezenet import SqueezeNet, preprocess_input
+# to the user desired model
+def distill(temperature=5.0, lambda_const=0.07, save_name=''):
 
     print('############# Temperature #############')
     print('#############     {} #############'.format(temperature))
@@ -59,7 +62,8 @@ def distill(temperature=5.0, lambda_const=0.07, model_path='', save_name=''):
         batch_size=64
     )
 
-    model = load_model(model_path)
+    # HERE IS WHERE YOU INPUT YOUR MODEL from your script
+    model = SqueezeNet(weight_decay=1e-4, image_size=299)
 
     # remove softmax
     model.layers.pop()
@@ -120,20 +124,12 @@ def distill(temperature=5.0, lambda_const=0.07, model_path='', save_name=''):
 if __name__ == '__main__':
     # construct the argument parser and parse the arguments
     ap = argparse.ArgumentParser()
-    ap.add_argument("-d", "--dataset", type=str, required=True,
-                    help="path dataset of input images")
     ap.add_argument("-t", "--temperature", type=float, required=True,
                     help="temperature for the softmax function")
     ap.add_argument("-l", "--lambda", type=float, required=True,
                     help="lambda parameter for scaling the hard targets")
-    ap.add_argument("-m", "--student_model", type=str, required=True,
-                    help="string name of hdf5 file of student model")
     ap.add_argument("-s", "--save_name", type=str, required=True,
                     help="string name of save name of trained student")
-    ap.add_argument("-p", "--plot", type=str, default="plot.png",
-                    help="path to output loss/accuracy plot")
-    ap.add_argument("-r", "--retrain", type=bool, default=False,
-                    help="path to output loss/accuracy plot")
     args = vars(ap.parse_args())
-    print('Here is what was the input args["dataset"] = {},  args["model"]= {}'.format(args["dataset"], args["student_model"]))
-    distill(args["temperature"], args["lambda"])
+    print('Here is what was the input args["dataset"] = {},  args["model"]= {}'.format(args["dataset"], args["save_name"]))
+    distill(args["temperature"], args["lambda"], args["save_name"])

@@ -1,8 +1,7 @@
-#used to create a dataframe of the metadata for later use
 import pandas as pd
 from make_metadata import make_metadata as md
 
-
+# Module to create the dataframe for creating the training and validation sets
 def create_dataframe():
     meta_data = pd.DataFrame(md())
     meta_data.columns = ['directory', 'img_name', 'height', 'width', 'channels', 'byte_size', 'bit_depth']

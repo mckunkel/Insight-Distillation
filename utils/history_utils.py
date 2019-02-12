@@ -3,7 +3,7 @@ import constants as c
 
 data_dir = c.data_dir
 
-
+# save plots of model
 def history_utils(model, student_name,temperature, lambda_const, num_residuals=0):
     #Lets make some save strings first, some models will not depend on num_residuals
     if num_residuals == 0:
